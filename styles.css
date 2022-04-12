@@ -4,6 +4,17 @@
     width: 20%;
     min-width: 170px;
     margin: 1%;
+    font-weight: 500;
+    font-size: larger;
+    color: white;
+    text-shadow: 0 0 10px black;
+    border: 5px none gray;
+    transition: all .2s ease-in-out; 
+}
+
+.btn:hover {
+    color: gray;
+    transform: scale(1.1);
 }
 
 .headerFooter {
