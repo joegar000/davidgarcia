@@ -17,6 +17,10 @@
     transform: scale(1.1);
 }
 
+a {
+    background-size: cover;
+}
+
 .headerFooter {
     text-align: center;
     padding-top: 3%;
@@ -36,9 +40,25 @@ body {
     justify-content: space-around;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-bottom: 0;
+    width: 100%;
+
+    position: absolute;
+    left: -2000px;
+    animation: slide 1s forwards 2s;
 }
 
-a {
-    background-size: cover;
+h1 {
+    color: white;
+
+    position: absolute;
+    right: 500px;
+    animation: leave 1s forwards 2s;
+}
+
+@keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes leave {
+    100% { right: 100%; }
 }
