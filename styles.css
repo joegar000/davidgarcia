@@ -4,6 +4,18 @@
     width: 75%;
     margin: auto;padding: 3% 0% 3% 0%;
     border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.aboutImage {
+    max-height: 100px;
+    min-height: 1px;
+    max-width: 100px;
+    min-width: 1px;
+    margin-right: 5px;
+    border-radius: 100%;
 }
 
 .fadeinAnimation {
@@ -69,10 +81,12 @@ body {
     animation: slide 1s forwards 1s;
 }
 
-h1 {
+.davidGarcia, .davidGarcia:hover, .davidGarcia:visited, .davidGarcia:active {
     color: white;
     width: 100%;
     font-size: 60px;
+    font-weight: 500;
+    text-decoration: none;
 }
 
 .headerStuff {
