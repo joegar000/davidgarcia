@@ -66,7 +66,7 @@ h1 {
 }
 
 @keyframes slide {
-    100% { left: 0; }
+    100% { transform: translateX(2000px); }
 }
 
 @keyframes fadein {
