@@ -85,6 +85,9 @@ body {
     flex-direction: column;
     background-color: #272727;
     text-align: center;
+    background-image: url(./images/background.jpg);
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .buttonsDiv {
