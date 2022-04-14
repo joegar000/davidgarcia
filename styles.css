@@ -1,8 +1,9 @@
-.hAndV {
-    margin-bottom: 3%;
-    background: rgba(255, 255, 255, .2);
-    padding: 1% 0% 1% 0%;
-    border-radius: 20px;
+.programs, .programs:hover, .programs:visited, .programs:active {
+    font-size: 16px;
+    color: white;
+    width: 100%;
+    text-decoration: none;
+    margin-bottom: 1rem;
 }
 
 hr {
@@ -46,6 +47,10 @@ hr {
     width: 75%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 3%;
+    background: rgba(255, 255, 255, .2);
+    padding: 1% 0% 1% 0%;
+    border-radius: 20px;
 }
 
 .btnHome {
