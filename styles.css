@@ -1,10 +1,18 @@
-.programs, .programs:hover, .programs:visited, .programs:active {
-    font-size: 16px;
+.programs, .programs:visited, .programs:active {
+    font-size: 25px;
     color: white;
     width: 100%;
     text-decoration: none;
     margin-bottom: 1rem;
+    -webkit-transition: font-size 0.5s;
+    transition: font-size 0.5s;
 }
+
+.programs:hover {
+    -webkit-transition: font-size 0.5s;
+    transition: font-size 0.5s;
+    font-size: 30px;
+  }
 
 hr {
     opacity: 1;
