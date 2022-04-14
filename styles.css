@@ -27,10 +27,8 @@ hr {
 }
 
 .aboutImage {
-    max-height: 100px;
-    min-height: 1px;
-    max-width: 100px;
-    min-width: 1px;
+    height: 100px;
+    width: 100px;
     margin-right: 5px;
     border-radius: 100%;
 }
