@@ -8,27 +8,379 @@
     </head>
     <body>
         <div class="headerStuff fadeinAnimation">
-            <a class="davidGarcia" href="./index.html">David Garcia</a>
+            <a class="davidGarcia" href="../index.html">David Garcia</a>
             <p>Software Engineer | Student | Musician</p>
         </div>
         <div class="fadeinAnimation" style="display: flex; flex-wrap: wrap; justify-content: space-evenly; padding-top: 5%; padding-bottom: 5%;">
-            <a class="btn text-white" style="border: 1px solid white;" href="./resume.html">Resume</a>
-            <a class="btn text-white" style="border: 1px solid white;" href="./honorsAndVolunteering.html">Honors/Volunteering</a>
-            <a class="btn text-white" style="border: 1px solid white;" href="./programs.html">Programs</a>
-            <a class="btn text-white" style="border: 1px solid white;" href="./about.html">About Me</a>
+            <a class="btn text-white" style="border: 1px solid white;" href="../resume.html">Resume</a>
+            <a class="btn text-white" style="border: 1px solid white;" href="../honorsAndVolunteering.html">Honors/Volunteering</a>
+            <a class="btn text-white" style="border: 1px solid white;" href="../programs.html">Programs</a>
+            <a class="btn text-white" style="border: 1px solid white;" href="../about.html">About Me</a>
         </div>
         <div>
             <div class="content fadeinAnimation">
-                <a class="programs" href="./programs/8-Puzzle_Solver.html">8-Puzzle Solver</a>
-                <br>
-                <a class="programs" href="./programs/Two_Way_Linked_List.html">Two Way Linked List</a>
-                <br>
-                <a class="programs" href="./programs/SumSeries.html">SumSeries</a>
+                <p>For this assignment I created a Two Way Linked List, using the Linked List class as a starting point. As I recall, it was
+                    difficult to add code to an already existing class because I had to make sure I understood what was already going on in that class,
+                    but by the end of it I definitely gained a better understanding of how Linked Lists work. It also helped to further my comprehension
+                    of what OOP is capable of.</p>
+                <pre><code>
+                    /** David Garcia
+                    COSC 2336-48F
+                    Instructor: Dr. Doerschuk
+                    Programming Assignment 7
+                    Due:  <10/30/2019
+                    The purpose of this program is to create a TwoWayLinkedList and print it in order, print it in reverse, and then print it in order again, starting at index 2.
+                    This program also contains the the class for a TwoWayLinkedList. */
+
+                    /** **NOTE**
+                    I have not added any additional comments/documentation to this program since it was provided by the instructor and the assignment was to fill in each 
+                    occurrence of **** with appropriate code. */
+
+                    import java.util.ListIterator;
+
+                    public class MyNewTwoWayLinkedListDavidGarcia {
+                      public static void main(String&#091;] args) {
+                        TwoWayLinkedList<Integer> list = new TwoWayLinkedList<Integer>();
+                        list.addLast(1);
+                        list.addLast(2);
+                        list.addLast(3);
+                        list.addLast(4);
+                        
+                        System.out.println("Printing the list in order using toString(): " + list.toString());
+                        System.out.println("Advancing to the last element in the list using the next() operator.");
+                        
+                        java.util.ListIterator<Integer> iterator = list.iterator();
+                        for (int i=0; i < list.size()-1; i++)
+                        	iterator.next();
+                        
+                        System.out.println("Printing the list in reverse order using the previous() and hasPrevious() methods: ");
+                        
+                        while (iterator.hasPrevious())
+                          System.out.print(iterator.previous() + " ");
+                        System.out.println();
+                        
+                        System.out.println("Printing elements starting with index 2 using listIterator(int index):");
+                        
+                        java.util.ListIterator<Integer> listIterator = list.listIterator(2);
+                        while (listIterator.hasNext())
+                        	System.out.print(listIterator.next() + " ");
+                        
+                      }
+                  
+                      static class TwoWayLinkedList<E> extends java.util.AbstractSequentialList <E> {
+                        private Node<E> head, tail;
+                        private int size;
+                        
+                        /** Create a default list */
+                        public TwoWayLinkedList() {
+                        }
+                    
+                        /** Create a list from an array of objects */
+                        public TwoWayLinkedList(E&#091;] objects) {
+                          for (E e : objects)
+                            add(e);
+                        }
+                    
+                        /** Return the head element in the list */
+                        public E getFirst() {
+                          if (size == 0) {
+                            return null;
+                          } else {
+                            return head.element;
+                          }
+                        }
+                    
+                        /** Return the last element in the list */
+                        public E getLast() {
+                          if (size == 0) {
+                            return null;
+                          } else {
+                            return tail.element;
+                          }
+                        }
+                    
+                        /** Add an element to the beginning of the list */
+                        public void addFirst(E e) {
+                          Node<E> newNode = new Node<E>(e); // Create a new node
+                          newNode.next = head; // link the new node with the head
+                          head = newNode; // head points to the new node
+                          size++; // Increase list size
+                        
+                          if (tail == null) // the new node is the only node in list
+                            tail = head;
+                        
+                          if (head != tail)
+                            head.next.previous = newNode; // For a two-way linked list
+                        }
+                    
+                        /** Add an element to the end of the list */
+                        public void addLast(E e) {
+                          Node<E> newNode = new Node<E>(e); // Create a new for element e
+                        
+                          Node<E> temp = tail; // For a two-way linked list
+                        
+                          if (tail == null) {
+                            head = tail = newNode; // The new node is the only node in list
+                          } else {
+                            tail.next = newNode; // Link the new with the last node
+                            tail = tail.next; // tail now points to the last node
+                          }
+                      
+                          size++; // Increase size
+                      
+                          tail.previous = temp; // For a two-way linked list
+                        }
+                    
+                        /**
+                         * Add a new element at the specified index in this list The index of the
+                         * head element is 0
+                         */
+                        public void add(int index, E e) {
+                          if (index == 0) {
+                            addFirst(e);
+                          } else if (index >= size) {
+                            addLast(e);
+                          } else {
+                            Node<E> current = head;
+                            for (int i = 1; i < index; i++) {
+                              current = current.next;
+                            }
+                            Node<E> temp = current.next;
+                            current.next = new Node<E>(e);
+                            (current.next).next = temp;
+                            size++;
+                            
+                            // For a two-way linked list
+                            temp.previous = current.next;
+                            current.next.previous = current;
+                          }
+                        }
+                    
+                        /**
+                         * Remove the head node and return the object that is contained in the
+                         * removed node.
+                         */
+                        public E removeFirst() {
+                          if (size == 0) {
+                            return null;
+                          } else {
+                            Node<E> temp = head;
+                            head = head.next;
+                            size--;
+                            if (head == null) {
+                              tail = null;
+                            }
+                            return temp.element;
+                          }
+                        }
+                    
+                        /**
+                         * Remove the last node and return the object that is contained in the
+                         * removed node.
+                         */
+                        public E removeLast() {
+                          if (size == 0) {
+                            return null;
+                          } else if (size == 1) {
+                            Node<E> temp = head;
+                            head = tail = null;
+                            size = 0;
+                            return temp.element;
+                          } else {
+                            Node<E> current = head;
+                            
+                            for (int i = 0; i < size - 2; i++) {
+                              current = current.next;
+                            }
+                        
+                            Node<E> temp = tail;
+                            tail = current;
+                            tail.next = null;
+                            size--;
+                            return temp.element;
+                          }
+                        }
+                    
+                        /**
+                         * Remove the element at the specified position in this list. Return the
+                         * element that was removed from the list.
+                         */
+                        public E remove(int index) {
+                          if (index < 0 || index >= size) {
+                            return null;
+                          } else if (index == 0) {
+                            return removeFirst();
+                          } else if (index == size - 1) {
+                            return removeLast();
+                          } else {
+                            Node<E> previous = head;
+                            
+                            for (int i = 1; i < index; i++) {
+                              previous = previous.next;
+                            }
+                        
+                            Node<E> current = previous.next;
+                            previous.next = current.next;
+                            current.next.previous = current.next; // For a two-way linked list
+                            size--;
+                            return current.element;
+                          }
+                        }
+                    
+                        @Override
+                        public String toString() {
+                          StringBuilder result = new StringBuilder("&#091;");
+                        
+                          Node<E> current = head;
+                          for (int i = 0; i < size; i++) {
+                            result.append(current.element);
+                            current = current.next;
+                            if (current != null) {
+                              result.append(", "); // Separate two elements with a comma
+                            } else {
+                              result.append("]"); // Insert the closing ] in the string
+                            }
+                          }
+                      
+                          return result.toString();
+                        }
+                    
+                        /** Clear the list */
+                        public void clear() {
+                          head = tail = null;
+                        }
+                    
+                        /** Return true if this list contains the element o */
+                        public boolean contains(Object e) {
+                          System.out.println("Implementation left as an exercise");
+                          return true;
+                        }
+                    
+                        /** Return the element from this list at the specified index */
+                        public E get(int index) {
+                          System.out.println("Implementation left as an exercise");
+                          return null;
+                        }
+                    
+                        /**
+                         * Return the index of the head matching element in this list. Return -1 if
+                         * no match.
+                         */
+                        public int indexOf(Object e) {
+                          System.out.println("Implementation left as an exercise");
+                          return 0;
+                        }
+                    
+                        /**
+                         * Return the index of the last matching element in this list Return -1 if
+                         * no match.
+                         */
+                        public int lastIndexOf(Object e) {
+                          System.out.println("Implementation left as an exercise");
+                          return 0;
+                        }
+                    
+                        /**
+                         * Replace the element at the specified position in this list with the
+                         * specified element.
+                         */
+                        public E set(int index, E e) {
+                          System.out.println("Implementation left as an exercise");
+                          return null;
+                        }
+                    
+                        /** Override the iterator method defined in Iterable */
+                        public java.util.ListIterator<E> iterator() {
+                          return new LinkedListIterator<E>();
+                        }
+                        public java.util.ListIterator<E> iterator(int index) {
+                            return new LinkedListIterator<E>(index);
+                          }
+                        private class LinkedListIterator<E> implements java.util.ListIterator<E> {
+                          private Node<E> current = (Node<E>)head; // Current index
+                          int index = 0;
+                        
+                          public LinkedListIterator() {
+                          }
+
+                          public LinkedListIterator(int index) {
+                            if (index < 0 || index > size)
+                              throw new IndexOutOfBoundsException("Index: " + index + ", Size: "
+                                + size);
+                            for (int nextIndex = 0; nextIndex < index; nextIndex++)
+                              current = current.next;
+                          }
+                      
+                          public boolean hasNext() {
+                            return (current != null);
+                          }
+                      
+                          public E next() {
+                            E e = current.element;
+                            current = current.next;
+                            return e;
+                          }
+                      
+                          public void remove() {
+                            System.out.println("Implementation left as an exercise");
+                          }
+                      
+                          public void add(E e) {
+                            System.out.println("Implementation left as an exercise");
+                          }
+                      
+                          public boolean hasPrevious() {
+                        	  return (current != null);
+                        
+                          }
+                      
+                          public int nextIndex() {
+                            System.out.println("Implementation left as an exercise");
+                            return 0;
+                          }
+                      
+                          public E previous() {
+                            E e = current.element;
+                            current = current.previous;
+                            return e;
+                          }
+                      
+                          public int previousIndex() {
+                            System.out.println("Implementation left as an exercise");
+                            return 0;
+                          }
+                      
+                          @Override
+                          public void set(E e) {
+                            current.element = e; // TODO Auto-generated method stub
+                          }
+                        }
+                    
+                        public class Node<E> {
+                          E element;
+                          Node<E> next;
+                          Node<E> previous;
+                        
+                          public Node(E o) {
+                            element = o;
+                          }
+                        }
+                    
+                        public int size() {
+                          return size;
+                        }
+                    
+                        public ListIterator<E> listIterator(int index) {
+                          return new LinkedListIterator<E>(index); 
+                        }
+                      }
+                    }
+            </code></pre>
             </div>
         </div>
     </body>
     
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="../styles.css">
 </html>

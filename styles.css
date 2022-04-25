@@ -1,3 +1,8 @@
+pre {
+    color: white;
+    text-align: left;
+}
+
 .programs, .programs:visited, .programs:active {
     font-size: 25px;
     color: white;
