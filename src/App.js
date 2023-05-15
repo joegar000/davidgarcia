@@ -4,10 +4,11 @@ import { Home } from "./components/home";
 import { Projects } from './components/projects';
 import { ProjectIdeas } from './components/project-ideas';
 import { Resume } from './components/resume';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 function App() {
     return (
-        <>
+        <ParallaxProvider>
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -15,13 +16,13 @@ function App() {
                 <Route path="/project-ideas" element={<ProjectIdeas />} />
                 <Route path="/resume" element={<Resume />} />
             </Routes>
-        </>
+        </ParallaxProvider>
     );
 }
 
 export function Navbar() {
     return (
-        <nav className="navbar navbar-expand-md shadow">
+        <nav className="navbar navbar-expand-md shadow fixed-top bg-body">
             <div className="container-fluid">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#my-navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
