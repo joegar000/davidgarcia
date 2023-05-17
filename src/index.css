@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+a.nav-link.navbar-brand {
+  transition: transform 0.2s ease-in-out;
+}
+
+a.nav-link.navbar-brand:hover {
+  transform: scale(1.2);
+}
+
+body {
+  font-family: sans-serif;
+}
+
+/* .home-greeting {
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+} */

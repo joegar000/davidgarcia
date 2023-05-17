@@ -22,7 +22,7 @@ function App() {
 
 export function Navbar() {
     return (
-        <nav className="navbar navbar-expand-md shadow fixed-top bg-body">
+        <nav className="navbar navbar-expand-md bg-body p-3 shadow">
             <div className="container-fluid">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#my-navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
