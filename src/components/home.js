@@ -14,7 +14,7 @@ export function Home() {
     // });
     return (
         <>
-            <div className="text-center pt-5">
+            <div className="text-center pt-5 px-2">
                 <span className="m-auto display-6">Hello! My name is David. I'm a software developer.</span>
             </div>
             <div className="row p-2 pt-5">
