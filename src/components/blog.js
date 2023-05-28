@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
-import data from "../data/posts.json";
+import data from "../data/mock-db.json";
 
 export function Blog() {
     // TODO: Replace `posts` with `data`
