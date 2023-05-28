@@ -1,6 +1,7 @@
 import './App.css';
 import { Link, Route, Routes } from "react-router-dom";
 import { Home } from "./components/home";
+import { Blog } from "./components/blog";
 import { Projects } from './components/projects';
 import { ProjectIdeas } from './components/project-ideas';
 import { Resume } from './components/resume';
@@ -12,6 +13,7 @@ function App() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/blog" element={<Blog />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/project-ideas" element={<ProjectIdeas />} />
                 <Route path="/resume" element={<Resume />} />
@@ -31,6 +33,9 @@ export function Navbar() {
                     <ul className="navbar-nav m-auto">
                         <li className="nav-item">
                             <Link to="/" className="nav-link navbar-brand">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/blog" className="nav-link navbar-brand">Blog</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/projects" className="nav-link navbar-brand">Projects</Link>
