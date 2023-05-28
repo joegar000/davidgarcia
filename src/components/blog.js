@@ -1,22 +1,10 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
+import data from "../data/posts.json";
 
-const posts = [
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' },
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' },
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' },
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' },
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' },
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' },
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' },
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' },
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' },
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' },
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' },
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' },
-    { title: 'Test title', subtitle: 'This is a subtitle', text: 'Hello, friendo' }
-];
 export function Blog() {
+    // TODO: Replace `posts` with `data`
+    let posts = [{ title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' }];
     const [resultsNum, setResultsNum] = useState(10);
     const [pageNum, setPageNum] = useState(0);
 
@@ -28,7 +16,7 @@ export function Blog() {
     return (
         <>
             <div className="row my-4 m-auto w-50">
-                <div className="col">
+                <div className="col-auto">
                     <label className="form-label" htmlFor="resultsPerPageInput">Results per page</label>
                     <input className="form-control" type="number" defaultValue={resultsNum} min="1" max={`${posts.length}`}
                         onChange={e => setResultsNum(Number(e.target.value))}
