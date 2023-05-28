@@ -3,7 +3,6 @@ import { Link, Route, Routes } from "react-router-dom";
 import { Home } from "./components/home";
 import { Blog } from "./components/blog";
 import { Projects } from './components/projects';
-import { ProjectIdeas } from './components/project-ideas';
 import { Resume } from './components/resume';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
@@ -15,7 +14,6 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/projects" element={<Projects />} />
-                <Route path="/project-ideas" element={<ProjectIdeas />} />
                 <Route path="/resume" element={<Resume />} />
             </Routes>
         </ParallaxProvider>
@@ -39,9 +37,6 @@ export function Navbar() {
                         </li>
                         <li className="nav-item">
                             <Link to="/projects" className="nav-link navbar-brand">Projects</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to="/project-ideas" className="nav-link navbar-brand">Project Ideas</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/resume" className="nav-link navbar-brand">Resume</Link>
