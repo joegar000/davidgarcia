@@ -1,4 +1,6 @@
 import './App.css';
+import "bootstrap-icons/bootstrap-icons.svg";
+import "bootstrap/dist/css/bootstrap.css";
 import { Link, Route, Routes } from "react-router-dom";
 import { Home } from "./components/home";
 import { Blog } from "./components/blog";
