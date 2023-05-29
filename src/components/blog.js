@@ -4,7 +4,22 @@ import data from "../data/mock-db.json";
 
 export function Blog() {
     // TODO: Replace `posts` with `data`
-    let posts = [{ title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' }];
+    let posts = [
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    ];
     const [resultsNum, setResultsNum] = useState(10);
     const [pageNum, setPageNum] = useState(0);
 
@@ -40,6 +55,21 @@ export function Blog() {
             </div>
             <div className="d-flex align-items-center mt-4 flex-column">
                 {postsToRender.map((post, i) => <PostCard key={i + resultsStart} {...post} />)}
+            </div>
+            <div className="d-flex mt-3 justify-content-center align-items-end" style={{ flexGrow: 10 }}>
+                <nav>
+                    <ReactPaginate forcePage={pageNum} className="pagination"
+                        pageCount={totalPages} pageRangeDisplayed={2} marginPagesDisplayed={1}
+                        activeClassName="disabled"
+                        pageClassName="page-item" pageLinkClassName="page-link"
+                        previousLabel="&laquo;" previousClassName="page-item" previousLinkClassName="page-link"
+                        nextLabel="&raquo;" nextClassName="page-item" nextLinkClassName="page-link"
+                        breakClassName="page-item" breakLinkClassName="page-link"
+                        onPageChange={(item) => {
+                            setPageNum(item.selected);
+                        }}
+                    />
+                </nav>
             </div>
         </>
     );
