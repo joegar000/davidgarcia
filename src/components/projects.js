@@ -92,9 +92,9 @@ export function ProjectCard(props) {
                 <h5 className="card-title">{props.title}</h5>
                 <h6 className="card-subtitle mb-2 text-body-secondary">Tags: {props.tags.join(', ')}</h6>
                 <p className="card-text">{props.description}</p>
-                {props.links.map(link => {
+                {props.links.map((link, i) => {
                     return (
-                        <a className="card-link" href={link.link} target="_blank">{link.text}</a>
+                        <a key={i} className="card-link" href={link.link} target="_blank">{link.text}</a>
                     );
                 })}
             </div>
