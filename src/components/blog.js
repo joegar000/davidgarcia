@@ -5,20 +5,20 @@ import data from "../data/mock-db.json";
 
 // TODO: Replace `posts` with `data`
 let posts = [
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
 ];
 
 export function Blog() {
@@ -84,6 +84,7 @@ export function PostCard(props) {
             <div className="card-body">
                 <h5 className="card-title">{props.title}</h5>
                 <h6 className="card-subtitle mb-2 text-body-secondary">{props.subtitle}</h6>
+                <p className="card-subtitle mb-2 text-body-secondary">{props.date}</p>
                 <Link to={`${props.id}`} className="btn btn-primary stretched-link" style={{ display: 'contents' }} />
             </div>
         </div>
@@ -96,5 +97,16 @@ export function postLoader({ params }) {
 
 export function BlogPost() {
     const post = useLoaderData();
-    return <div>blog post</div>
+    return (
+        <div className="d-flex justify-content-center mt-5">
+            <div className="w-75">
+                <h1>{post.title}</h1>
+                <h5>{post.subtitle}</h5>
+                <p>{post.date}</p>
+                <div className="mt-3">
+                    <p dangerouslySetInnerHTML={{ __html: post.html }}></p>
+                </div>
+            </div>
+        </div >
+    );
 }
