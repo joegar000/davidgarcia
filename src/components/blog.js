@@ -1,25 +1,27 @@
 import { useState } from "react";
 import ReactPaginate from "react-paginate";
+import { Link, useLoaderData } from "react-router-dom";
 import data from "../data/mock-db.json";
 
+// TODO: Replace `posts` with `data`
+let posts = [
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
+];
+
 export function Blog() {
-    // TODO: Replace `posts` with `data`
-    let posts = [
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-        { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>' },
-    ];
     const [resultsNum, setResultsNum] = useState(10);
     const [pageNum, setPageNum] = useState(0);
 
@@ -54,7 +56,7 @@ export function Blog() {
                 </div>
             </div>
             <div className="d-flex align-items-center mt-4 flex-column">
-                {postsToRender.map((post, i) => <PostCard key={i + resultsStart} {...post} />)}
+                {postsToRender.map((post, i) => <PostCard key={i + resultsStart} {...post} id={posts.indexOf(post) + 1} />)}
             </div>
             <div className="d-flex mt-3 justify-content-center align-items-end" style={{ flexGrow: 10 }}>
                 <nav>
@@ -82,7 +84,17 @@ export function PostCard(props) {
             <div className="card-body">
                 <h5 className="card-title">{props.title}</h5>
                 <h6 className="card-subtitle mb-2 text-body-secondary">{props.subtitle}</h6>
+                <Link to={`${props.id}`} className="btn btn-primary stretched-link" style={{ display: 'contents' }} />
             </div>
         </div>
     );
+}
+
+export function postLoader({ params }) {
+    return posts[0];
+}
+
+export function BlogPost() {
+    const post = useLoaderData();
+    return <div>blog post</div>
 }
