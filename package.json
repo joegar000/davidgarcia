@@ -1,6 +1,6 @@
 {
   "name": "starter-project",
-  "homepage": "https://joegar000.github.io/ePortfolio/",
+  "homepage": "",
   "main": "./management_app/main.js",
   "version": "0.1.0",
   "private": true,
