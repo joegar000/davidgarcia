@@ -10,9 +10,14 @@ import { keymap } from "prosemirror-keymap";
 import { history, undo, redo } from "prosemirror-history";
 import { baseKeymap } from "prosemirror-commands";
 
+import { LowSync } from "lowdb";
+import { JSONFileSync } from "lowdb/node";
+
 document.addEventListener('DOMContentLoaded', () => {
     const editor = document.querySelector('.editor');
-    const input = document.querySelector('#html');
+    const html = document.querySelector('#html');
+    const title = document.querySelector('#title');
+    const subtitle = document.querySelector('#subtitle');
 
     const domSerializer = DOMSerializer.fromSchema(schema);
     let state = EditorState.create({
@@ -30,8 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
             view.updateState(newState);
             const target = document.createElement('div');
             domSerializer.serializeFragment(newState.doc.content, { document }, target);
-            input.value = target.outerHTML;
-        }
+            html.value = target.outerHTML;
+        },
+        attributes: { class: 'form-control' }
     });
-    view.dom.classList.add('form-control', 'p-3');
+
+    const submitButton = document.querySelector('#submit-new-post');
+    submitButton.addEventListener('click', async () => {
+        const data = {
+            title: title.value,
+            subtitle: subtitle.value,
+            html: html.value,
+            date: new Date().toDateString()
+        };
+
+        const adapter = new JSONFileSync('../src/data/mock-db.json');
+        const db = new LowSync(adapter, {});
+
+        db.read();
+
+        db.data.posts.push(data);
+        alert('Data written');
+    });
 });
