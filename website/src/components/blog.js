@@ -3,26 +3,9 @@ import ReactPaginate from "react-paginate";
 import { Link, useLoaderData } from "react-router-dom";
 import data from "../data/mock-db.json";
 
-// TODO: Replace `posts` with `data`
-let posts = [
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-    { title: 'Placeholder', subtitle: 'this is a subtitle', html: '<p>hi</p>', date: new Date().toDateString() },
-];
-
 export function Blog() {
-    const [resultsNum, setResultsNum] = useState(10);
+    const posts = data.posts;
+    const [resultsNum, setResultsNum] = useState(Math.min(10, posts.length));
     const [pageNum, setPageNum] = useState(0);
 
     const resultsStart = pageNum * resultsNum;
@@ -92,7 +75,7 @@ export function PostCard(props) {
 }
 
 export function postLoader({ params }) {
-    return posts[0];
+    return data.posts[params.postId - 1];
 }
 
 export function BlogPost() {
