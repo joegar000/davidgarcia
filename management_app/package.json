@@ -15,6 +15,7 @@
   "scripts": {
     "start": "concurrently -k \"build-electron -d\" \"wait-on build/.build-electron-done && electron .\"",
     "build": "build-electron",
+    "build-browser": "npx parcel build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -32,7 +33,9 @@
   "targets": {
     "renderer": {
       "source": "./src/renderer.js",
-      "distDir": "./src/static"
+      "distDir": "./src/static",
+      "includeNodeModules": true,
+      "outputFormat": "esmodule"
     }
   },
   "devDependencies": {

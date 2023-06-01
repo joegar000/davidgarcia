@@ -1,6 +1,6 @@
-// import "bootstrap-icons/bootstrap-icons.svg";
-// import "bootstrap/dist/css/bootstrap.css";
-// import "prosemirror-view/style/prosemirror.css";
+import "bootstrap-icons/bootstrap-icons.svg";
+import "bootstrap/dist/css/bootstrap.css";
+import "prosemirror-view/style/prosemirror.css";
 import { DOMSerializer } from "prosemirror-model";
 import { schema } from "prosemirror-schema-basic"
 import { EditorState } from "prosemirror-state"
@@ -11,6 +11,9 @@ import { baseKeymap } from "prosemirror-commands";
 
 document.addEventListener('DOMContentLoaded', () => {
     const editor = document.querySelector('.editor');
+    const html = document.querySelector('#html');
+    const title = document.querySelector('#title');
+    const subtitle = document.querySelector('#subtitle');
 
     const domSerializer = DOMSerializer.fromSchema(schema);
     let state = EditorState.create({
@@ -31,5 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
             html.value = target.outerHTML;
         },
         attributes: { class: 'form-control' }
+    });
+    document.addEventListener('clearInputs', () => {
+        title.value = '';
+        subtitle.value = '';
+        view.dispatch(view.state.tr.deleteRange(0, view.state.doc.content.size));
     });
 });

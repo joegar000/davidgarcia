@@ -27,14 +27,17 @@ window.addEventListener('DOMContentLoaded', () => {
             date: new Date().toDateString()
         };
 
-        const adapter = new JSONFileSync('../../website/src/data/mock-db.json');
+        console.log('path: ' + __dirname + '/../../website/src/data/mock-db.json')
+        const adapter = new JSONFileSync(__dirname + '/../../website/src/data/mock-db.json');
         const db = new LowSync(adapter, { posts: [] });
 
         db.read();
 
-        db.data.push(data);
+        db.data.posts.push(data);
 
         db.write();
+
         alert('Data written');
+        document.dispatchEvent(new CustomEvent('clearInputs'));
     });
 });
