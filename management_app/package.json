@@ -27,15 +27,20 @@
     "prosemirror-keymap": "^1.2.2",
     "prosemirror-schema-basic": "^1.2.2",
     "prosemirror-state": "^1.4.3",
-    "prosemirror-view": "^1.31.3"
+    "prosemirror-view": "^1.31.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-paginate": "^8.2.0",
+    "react-router-dom": "^6.11.2",
+    "simple-git": "^3.19.0"
   },
-  "renderer": "./src/renderer.js",
+  "index": "index.js",
   "targets": {
-    "renderer": {
-      "source": "./src/renderer.js",
+    "index": {
+      "source": "./src/pages/index.jsx",
       "distDir": "./src/static",
-      "includeNodeModules": true,
-      "outputFormat": "esmodule"
+      "outputFormat": "commonjs",
+      "includeNodeModules": true
     }
   },
   "devDependencies": {
@@ -44,6 +49,7 @@
     "electron": "^24.4.0",
     "parcel": "^2.9.1",
     "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
     "wait-on": "^7.0.1"
   }
 }
