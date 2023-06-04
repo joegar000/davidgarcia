@@ -25,3 +25,4 @@ yarn-error.log*
 */.parcel-cache
 /management_app/src/static
 /management_app/build
+/management_app/dist
