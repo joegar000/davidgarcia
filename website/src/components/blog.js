@@ -9,7 +9,7 @@ export function Blog() {
     const [pageNum, setPageNum] = useState(0);
 
     const resultsStart = pageNum * resultsNum;
-    const postsToRender = posts.slice(resultsStart, resultsStart + resultsNum);
+    const postsToRender = posts.slice().reverse().slice(resultsStart, resultsStart + resultsNum);
     const totalPages = Math.ceil(posts.length / resultsNum);
     if (pageNum > totalPages - 1)
         setPageNum(totalPages - 1);
