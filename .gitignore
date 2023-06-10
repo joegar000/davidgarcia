@@ -26,3 +26,4 @@ yarn-error.log*
 /management_app/src/static
 /management_app/build
 /management_app/dist
+/website/build
