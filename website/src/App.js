@@ -1,12 +1,12 @@
 import './App.css';
-import { Link, Outlet, Route, RouterProvider, Routes, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import { Link, Outlet, Route, RouterProvider, Routes, createBrowserRouter, createHashRouter, createRoutesFromElements } from "react-router-dom";
 import { Home } from "./components/home";
 import { Blog, BlogPost, postLoader } from "./components/blog";
 import { Projects } from './components/projects';
 import { Resume } from './components/resume';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
-export const router = createBrowserRouter(createRoutesFromElements(
+export const router = createHashRouter(createRoutesFromElements(
     <Route path="/" element={<App />}>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
