@@ -7,7 +7,8 @@ import { EditorState } from "prosemirror-state";
 import { nodes, marks } from "prosemirror-schema-basic";
 import { history, undo, redo } from "prosemirror-history";
 import { keymap } from "prosemirror-keymap";
-import { baseKeymap } from "prosemirror-commands";
+import { baseKeymap, setBlockType, toggleMark } from "prosemirror-commands";
+import { inputRules, InputRule } from "prosemirror-inputrules";
 
 
 export function PostForm(props) {
@@ -128,7 +129,8 @@ export function ProseMirror(props) {
             plugins: [
                 history(),
                 keymap({ "Mod-z": undo, "Mod-y": redo }),
-                keymap(baseKeymap)
+                keymap(baseKeymap),
+                getInputRules()
             ]
         });
         let view = new EditorView(ref.current, {
@@ -151,4 +153,40 @@ export function ProseMirror(props) {
             <div {...editorProps} ref={ref}></div>
         </>
     )
+}
+
+export function getInputRules() {
+    return inputRules({
+        rules: [
+            new InputRule(/^(\#{1,6})\s$/, (state, match, start, end) => {
+                console.log({ match })
+                const tr = state.tr;
+                const level = match[1].length;
+                tr.replaceRangeWith(start, end, mySchema.nodes.heading.create({ level }));
+                return tr;
+            }),
+            new InputRule(/\*\*(.+)\*\*$/, (state, match, start, end) => {
+                console.log(match)
+                const tr = state.tr;
+                const content = match[1];
+                tr.addMark(start, end, mySchema.marks.strong.create()).insertText(content, start, end);
+                return tr;
+            })
+
+        ]
+    })
+}
+
+export function getKeyBindings() {
+    return {
+        "Mod-b": toggleMark(mySchema.marks.strong),
+        "Mod-i": toggleMark(mySchema.marks.em),
+        "Mod-0": setBlockType(mySchema.nodes.paragraph),
+        "Mod-1": setBlockType(mySchema.nodes.heading, { level: 1 }),
+        "Mod-2": setBlockType(mySchema.nodes.heading, { level: 2 }),
+        "Mod-3": setBlockType(mySchema.nodes.heading, { level: 3 }),
+        "Mod-4": setBlockType(mySchema.nodes.heading, { level: 4 }),
+        "Mod-5": setBlockType(mySchema.nodes.heading, { level: 5 }),
+        "Mod-6": setBlockType(mySchema.nodes.heading, { level: 6 })
+    }
 }
