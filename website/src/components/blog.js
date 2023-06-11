@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import { Link, useLoaderData } from "react-router-dom";
-import data from "../data/mock-db.json";
 
 export function Blog() {
-    const posts = data.posts;
+    const [posts, setPosts] = useState([]);
     const [resultsNum, setResultsNum] = useState(Math.min(10, posts.length));
+    useEffect(() => {
+        fetch('mock-db.json').then(response => response.json()).then(data => {
+            setPosts(data.posts ?? []);
+            setResultsNum(Math.min(10, (data.posts?.length ?? 0)));
+        });
+    });
     const [pageNum, setPageNum] = useState(0);
 
     const resultsStart = pageNum * resultsNum;
@@ -74,7 +79,8 @@ export function PostCard(props) {
     );
 }
 
-export function postLoader({ params }) {
+export async function postLoader({ params }) {
+    const data = await fetch('mock-db.json');
     return data.posts[params.postId - 1];
 }
 
