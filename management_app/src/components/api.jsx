@@ -33,3 +33,10 @@ export function editDraft(data, id) {
     });
     alert('Draft edits saved');
 }
+
+export function saveNewProject(data) {
+    window.api.editProjects((projects) => {
+        projects.push(data);
+    });
+    alert('Project saved');
+}

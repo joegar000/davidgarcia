@@ -1,4 +1,4 @@
-import { editPost, getPosts } from "./api"
+import { editPost, getPosts } from "./api";
 import { Link, useLoaderData } from "react-router-dom";
 import { useMemo, useState } from "react";
 import { PostForm } from "./util";

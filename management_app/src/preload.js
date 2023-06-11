@@ -10,6 +10,8 @@ const db = new LowSync(adapter, { posts: [], projects: [], drafts: [] });
 window.api = {
     editPosts: (callback) => {
         db.read();
+        if (!db.data.posts)
+            db.data.posts = [];
         callback(db.data.posts);
         db.write();
     },
@@ -19,6 +21,8 @@ window.api = {
     },
     editDrafts: (callback) => {
         db.read();
+        if (!db.data.drafts)
+            db.data.drafts = [];
         callback(db.data.drafts);
         db.write();
     },
@@ -28,6 +32,8 @@ window.api = {
     },
     editProjects: (callback) => {
         db.read();
+        if (!db.data.projects)
+            db.data.projects = [];
         callback(db.data.projects);
         db.write();
     },
