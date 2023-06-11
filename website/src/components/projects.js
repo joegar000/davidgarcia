@@ -20,14 +20,14 @@ export function Projects() {
         setPageNum(totalPages - 1);
     return (
         <>
-            <div className="row my-4 m-auto w-50">
-                <div className="col-auto">
+            <div className="row d-md-flex justify-content-center my-4 m-auto w-50">
+                <div className="col-auto m-md-0 mb-3">
                     <label className="form-label" htmlFor="resultsPerPageInput">Rows per page</label>
                     <input className="form-control" type="number" value={resultsNum} min="1" max={`${Math.ceil(projects.length / 3)}`}
                         onChange={e => setResultsNum(Number(e.target.value))}
                     />
                 </div>
-                <div className="col d-flex justify-content-end align-items-end">
+                <div className="col-md d-flex justify-content-md-end justify-content-center align-items-end">
                     <nav>
                         <ReactPaginate forcePage={pageNum} className="pagination"
                             pageCount={totalPages} pageRangeDisplayed={2} marginPagesDisplayed={1}
