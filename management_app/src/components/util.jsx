@@ -128,7 +128,7 @@ export function ProseMirror(props) {
             doc,
             plugins: [
                 history(),
-                keymap({ "Mod-z": undo, "Mod-y": redo }),
+                keymap(getKeyBindings()),
                 keymap(baseKeymap),
                 getInputRules()
             ]
@@ -171,6 +171,13 @@ export function getInputRules() {
                 const content = match[1];
                 tr.addMark(start, end, mySchema.marks.strong.create()).insertText(content, start, end);
                 return tr;
+            }),
+            new InputRule(/(^|^\*)\*(.+)\*$/, (state, match, start, end) => {
+                console.log(match)
+                const tr = state.tr;
+                const content = match[2];
+                tr.addMark(start, end, mySchema.marks.em.create()).insertText(content, start, end);
+                return tr;
             })
 
         ]
@@ -179,6 +186,8 @@ export function getInputRules() {
 
 export function getKeyBindings() {
     return {
+        "Mod-z": undo,
+        "Mod-y": redo,
         "Mod-b": toggleMark(mySchema.marks.strong),
         "Mod-i": toggleMark(mySchema.marks.em),
         "Mod-0": setBlockType(mySchema.nodes.paragraph),
