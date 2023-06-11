@@ -80,7 +80,7 @@ export function PostCard(props) {
 }
 
 export async function postLoader({ params }) {
-    const data = await fetch('mock-db.json');
+    const data = await fetch('mock-db.json').then(res => res.json());
     return data.posts[params.postId - 1];
 }
 
