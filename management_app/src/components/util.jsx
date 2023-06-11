@@ -8,7 +8,7 @@ import { nodes, marks } from "prosemirror-schema-basic";
 import { history, undo, redo } from "prosemirror-history";
 import { keymap } from "prosemirror-keymap";
 import { baseKeymap, setBlockType, toggleMark } from "prosemirror-commands";
-import { inputRules, InputRule } from "prosemirror-inputrules";
+import { inputRules, InputRule, wrappingInputRule } from "prosemirror-inputrules";
 
 
 export function PostForm(props) {
@@ -170,6 +170,7 @@ export function getInputRules() {
                 tr.replaceRangeWith(start, end, mySchema.nodes.code_block.create());
                 return tr;
             }),
+            wrappingInputRule(/^>\s$/, mySchema.nodes.blockquote),
             new InputRule(/\*\*(.+)\*\*$/, (state, match, start, end) => {
                 console.log(match)
                 const tr = state.tr;
@@ -182,6 +183,19 @@ export function getInputRules() {
                 const tr = state.tr;
                 const content = match[2];
                 tr.addMark(start, end, mySchema.marks.em.create()).insertText(content, start, end);
+                return tr;
+            }),
+            new InputRule(/\`(.+)\`$/, (state, match, start, end) => {
+                const tr = state.tr;
+                const content = match[1];
+                tr.addMark(start, end, mySchema.marks.code.create()).insertText(content, start, end);
+                return tr;
+            }),
+            new InputRule(/\[(?<title>.+)\]\((?<href>.+)\)$/, (state, match, start, end) => {
+                console.log({ match })
+                const tr = state.tr;
+                const { title, href } = match.groups;
+                tr.replaceRangeWith(start, end, mySchema.text(title)).addMark(start, start + title.length, mySchema.marks.link.create({ title, href }));
                 return tr;
             })
 
