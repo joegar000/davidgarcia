@@ -92,6 +92,7 @@ export function BlogPost() {
                 <h1>{post.title}</h1>
                 <h5>{post.subtitle}</h5>
                 <p>{post.date}</p>
+                <hr />
                 <div className="mt-3">
                     <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
                 </div>
