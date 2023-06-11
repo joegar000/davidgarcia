@@ -2,7 +2,7 @@ import { LowSync } from "lowdb";
 import { JSONFileSync } from "lowdb/node";
 import { contextBridge } from "electron";
 
-const PATH_TO_DATA = __dirname + '/../../website/src/data/mock-db.json';
+const PATH_TO_DATA = __dirname + '/../../website/public/mock-db.json';
 
 const adapter = new JSONFileSync(PATH_TO_DATA);
 const db = new LowSync(adapter, { posts: [], projects: [], drafts: [] });
