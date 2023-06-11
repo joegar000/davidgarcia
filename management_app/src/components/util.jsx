@@ -165,6 +165,11 @@ export function getInputRules() {
                 tr.replaceRangeWith(start, end, mySchema.nodes.heading.create({ level }));
                 return tr;
             }),
+            new InputRule(/^\`\`\`\s$/, (state, match, start, end) => {
+                const tr = state.tr;
+                tr.replaceRangeWith(start, end, mySchema.nodes.code_block.create());
+                return tr;
+            }),
             new InputRule(/\*\*(.+)\*\*$/, (state, match, start, end) => {
                 console.log(match)
                 const tr = state.tr;
