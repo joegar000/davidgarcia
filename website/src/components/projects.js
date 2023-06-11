@@ -3,39 +3,15 @@ import ReactPaginate from "react-paginate";
 
 export function Projects() {
     const [projects, setProjects] = useState([]);
+    const [resultsNum, setResultsNum] = useState(Math.min(4, projects.length));
+    const [pageNum, setPageNum] = useState(0);
 
     useEffect(() => {
         fetch('mock-db.json').then(response => response.json()).then(data => {
             setProjects(data.projects ?? []);
+            setResultsNum(Math.min(4, (data.projects?.length ?? 0)));
         });
     });
-    // let projects = [
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    //     { title: 'Temp', tags: ['new', 'idea', 'idk'], links: [{ link: 'https://www.example.com', text: 'test' }, { link: 'https://www.google.com', text: 'test2' }], description: 'This is a sample description' },
-    // ]
-
-    const [resultsNum, setResultsNum] = useState(4);
-    const [pageNum, setPageNum] = useState(0);
 
     const resultsStart = pageNum * resultsNum * 3;
     const projectsToRender = projects.slice(resultsStart, resultsStart + resultsNum * 3);
