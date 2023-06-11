@@ -10,7 +10,7 @@ export function Blog() {
             setPosts(data.posts ?? []);
             setResultsNum(Math.min(10, (data.posts?.length ?? 0)));
         });
-    });
+    }, []);
     const [pageNum, setPageNum] = useState(0);
 
     const resultsStart = pageNum * resultsNum;
@@ -23,7 +23,7 @@ export function Blog() {
             <div className="row my-4 m-auto w-50">
                 <div className="col-auto">
                     <label className="form-label" htmlFor="resultsPerPageInput">Results per page</label>
-                    <input className="form-control" type="number" defaultValue={resultsNum} min="1" max={`${posts.length}`}
+                    <input className="form-control" type="number" value={resultsNum} min="1" max={`${posts.length}`}
                         onChange={e => setResultsNum(Number(e.target.value))}
                     />
                 </div>

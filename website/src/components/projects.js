@@ -11,7 +11,7 @@ export function Projects() {
             setProjects(data.projects ?? []);
             setResultsNum(Math.min(4, (data.projects?.length ?? 0)));
         });
-    });
+    }, []);
 
     const resultsStart = pageNum * resultsNum * 3;
     const projectsToRender = projects.slice(resultsStart, resultsStart + resultsNum * 3);
@@ -23,7 +23,7 @@ export function Projects() {
             <div className="row my-4 m-auto w-50">
                 <div className="col-auto">
                     <label className="form-label" htmlFor="resultsPerPageInput">Rows per page</label>
-                    <input className="form-control" type="number" defaultValue={resultsNum} min="1" max={`${Math.ceil(projects.length / 3)}`}
+                    <input className="form-control" type="number" value={resultsNum} min="1" max={`${Math.ceil(projects.length / 3)}`}
                         onChange={e => setResultsNum(Number(e.target.value))}
                     />
                 </div>
