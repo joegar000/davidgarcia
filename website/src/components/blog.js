@@ -93,7 +93,7 @@ export function BlogPost() {
                 <h5>{post.subtitle}</h5>
                 <p>{post.date}</p>
                 <hr />
-                <div className="mt-3">
+                <div className="mt-3 mb-5 blog-content">
                     <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
                 </div>
             </div>
