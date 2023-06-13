@@ -5,6 +5,7 @@ import { Blog, BlogPost, postLoader } from "./components/blog";
 import { Projects } from './components/projects';
 import { Resume } from './components/resume';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import { Footer } from "./components/footer";
 
 export const router = createHashRouter(createRoutesFromElements(
     <Route path="/" element={<App />}>
@@ -20,6 +21,7 @@ function App() {
         <ParallaxProvider>
             <Navbar />
             <Outlet />
+            <Footer />
         </ParallaxProvider>
     );
 }

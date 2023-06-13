@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import { Link, useLoaderData } from "react-router-dom";
+import { EmailSignUp } from "./email-signup";
 
 export function Blog() {
     const [posts, setPosts] = useState([]);
@@ -96,6 +97,8 @@ export function BlogPost() {
                 <div className="mt-3 mb-5 blog-content">
                     <div dangerouslySetInnerHTML={{ __html: post.html }}></div>
                 </div>
+                <hr />
+                <EmailSignUp />
             </div>
         </div >
     );
