@@ -25,7 +25,7 @@ export function EmailSignUp() {
                         <div className="m-3 row">
                             <div className="col">
                                 <div className="form-floating">
-                                    <input type="email" className="form-control" id="email" placeholder="name@example.com" required={true} />
+                                    <input type="email" name="email" className="form-control" id="email" placeholder="name@example.com" required={true} />
                                     <label className="form-label" htmlFor="email">Email</label>
                                 </div>
                             </div>
