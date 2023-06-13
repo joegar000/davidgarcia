@@ -29,7 +29,7 @@ export function EmailSignUp() {
                                     <label className="form-label" htmlFor="email">Email</label>
                                 </div>
                             </div>
-                            <div className="col-auto d-flex">
+                            <div className="col-md-auto pt-md-0 pt-2 d-flex">
                                 <button className="btn btn-success align-self-center"
                                     onClick={() => {
                                         const form = formRef.current;
