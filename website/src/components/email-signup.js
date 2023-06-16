@@ -5,7 +5,7 @@ export function EmailSignUp() {
     const [submitted, setSubmitted] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const formRef = useRef(document.createElement('form'));
-    const formLocation = "https://getform.io/f/79c149e4-2c25-4639-9353-5dbc9737ef4b";
+    const formLocation = "https://app.convertkit.com/forms/5263249/subscriptions";
 
     if (submitting)
         return (
@@ -25,7 +25,7 @@ export function EmailSignUp() {
                         <div className="m-3 row">
                             <div className="col">
                                 <div className="form-floating">
-                                    <input type="email" name="email" className="form-control" id="email" placeholder="name@example.com" required={true} />
+                                    <input type="email" name="email_address" className="form-control" id="email" placeholder="name@example.com" required={true} />
                                     <label className="form-label" htmlFor="email">Email</label>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@ export function EmailSignUp() {
 
     return (
         <div className="email-signup">
-            <h4>Email submitted. Thanks!</h4>
+            <h4>Success! Now check your email's inbox to confirm your subscription.</h4>
         </div>
     )
 }
