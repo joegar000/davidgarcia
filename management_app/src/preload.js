@@ -1,6 +1,6 @@
 import { LowSync } from "lowdb";
 import { JSONFileSync } from "lowdb/node";
-import { contextBridge } from "electron";
+import { Feed } from "feed";
 
 const PATH_TO_DATA = __dirname + '/../../website/public/mock-db.json';
 
@@ -42,3 +42,28 @@ window.api = {
         return db.data.projects;
     }
 };
+
+function updateRSS() {
+    const feed = new Feed({
+        title: 'David Garcia',
+        description: 'The personal blog of David Garcia',
+        copyright: 'David Garcia',
+        updated: new Date().toGMTString(),
+        id: 'https://joegar000.github.io/davidgarcia/',
+        link: 'https://joegar000.github.io/davidgarcia/',
+        author: {
+            name: 'David Garcia',
+            email: 'joegar000@gmail.com'
+        }
+    });
+    db.data.posts.forEach((post, i) => {
+        const url = `https://joegar000.github.io/davidgarcia/#/blog/${i}`;
+        feed.addItem({
+            title: post.title,
+            id: url,
+            link: url,
+            description: post.subtitle,
+            date: new Date(post.date).toGMTString()
+        });
+    });
+}
