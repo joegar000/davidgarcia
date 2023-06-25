@@ -13,7 +13,7 @@
     ]
   },
   "scripts": {
-    "start": "npx parcel build; concurrently -k \"build-electron -d\" \"wait-on build/.build-electron-done && electron .\"",
+    "start": "npx parcel build && concurrently -k \"build-electron -d\" \"wait-on build/.build-electron-done && electron .\"",
     "build": "build-electron",
     "build-browser": "npx parcel build",
     "test": "echo \"Error: no test specified\" && exit 1"
