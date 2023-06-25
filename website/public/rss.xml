@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>David Garcia</title>
+        <link>https://joegar000.github.io/davidgarcia/</link>
+        <description>The personal blog of David Garcia</description>
+        <lastBuildDate>Sun, 25 Jun 2023 22:43:31 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <copyright>David Garcia</copyright>
+        <item>
+            <title><![CDATA[A Little About Myself]]></title>
+            <link>https://joegar000.github.io/davidgarcia/#/blog/1</link>
+            <guid>https://joegar000.github.io/davidgarcia/#/blog/1</guid>
+            <pubDate>Mon, 12 Jun 2023 05:00:00 GMT</pubDate>
+            <description><![CDATA[My first blog post!]]></description>
+        </item>
+    </channel>
+</rss>
