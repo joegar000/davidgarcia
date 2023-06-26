@@ -51,34 +51,52 @@ export function ProjectsForm(props) {
                 </div>
                 <div className="col">
                     <label className="form-control-label" htmlFor="tags">Tags:</label>
-                    <div id="tags">{props.tags.join(', ')}</div>
+                    <div id="tags">{props.tags.map((tag, i) => {
+                        return (
+                            <span className="pe-2" key={tag}>
+                                {tag}
+                                <i className="text-danger px-1" onClick={() => {
+                                    props.setTags(props.tags.filter((_, i2) => i2 !== i))
+                                }} style={{ cursor: 'pointer' }}>X</i>
+                            </span>
+                        );
+                    })}</div>
                 </div>
             </div>
-            <div className="row justify-content-center">
+            <div className="row justify-content-center mb-3">
                 <label className="form-control-label" htmlFor="desc">Description:</label>
                 <input className="form-control" value={props.desc} id="desc" type="text" onChange={e => props.setDesc(e.target.value)} />
             </div>
-            <div className="row justify-content-center">
+            <div className="row justify-content-center mb-3">
                 <div className="col">
                     <label className="form-control-label" htmlFor="link">New Link:</label>
                     <div className="row" id="link">
-                        <div className="col">
+                        <div className="col ps-0">
                             <label className="form-control-label" htmlFor="url">Url:</label>
                             <input className="form-control" id="url" value={url} onChange={e => setUrl(e.target.value)} />
                         </div>
-                        <div className="col">
+                        <div className="col pe-0">
                             <label className="form-control-label" htmlFor="text">Text:</label>
                             <input className="form-control" id="text" value={text} onChange={e => setText(e.target.value)} />
                         </div>
-                        <button className="btn btn-primary" onClick={() => props.setLinks([...props.links, { link: url, text }])}>Add Link</button>
+                        <button className="btn btn-primary" onClick={() => {
+                            props.setLinks([...props.links, { link: url, text }]);
+                            setText('');
+                            setUrl('');
+                        }}>Add Link</button>
                     </div>
                 </div>
                 <div className="col">
                     <label className="form-control-label" htmlFor="link-list">Links:</label>
                     <div className="row" id="link-list">
-                        {props.links.map(({ link, text }) => {
+                        {props.links.map(({ link, text }, i) => {
                             return (
-                                <div className="row">
+                                <div className="row" key={link + text}>
+                                    <div className="col-auto">
+                                        <i className="text-danger" onClick={() => {
+                                            props.setLinks(props.links.filter((_, i2) => i2 !== i))
+                                        }} style={{ cursor: 'pointer' }}>X</i>
+                                    </div>
                                     <div className="col">{text}</div>
                                     <div className="col">{link}</div>
                                 </div>

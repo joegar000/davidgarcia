@@ -23,7 +23,7 @@ export function NewProject() {
                 <div className="col-auto">
                     <button className="btn btn-success w-auto" id="submit-new-post" type="button"
                         onClick={() => {
-                            saveNewProject({ title, tags, links, desc });
+                            saveNewProject({ title, tags, links, description: desc });
                         }}
                     >Submit</button>
                 </div>
