@@ -32,6 +32,11 @@ div.blog-content p:empty {
   height: 1.5em;
 }
 
+.email-signup {
+  max-width: 750px;
+  margin: auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export function EmailSignUp() {
     const [submitted, setSubmitted] = useState(false);
