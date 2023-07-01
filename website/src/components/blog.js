@@ -5,7 +5,6 @@ import { Paging } from "./paging";
 
 export function Blog() {
     const { posts } = useLoaderData();
-    console.log('hi')
     const [resultsNum, setResultsNum] = useState(Math.min(10, posts.length));
     const [pageNum, setPageNum] = useState(0);
 
