@@ -25,7 +25,7 @@ export function Projects() {
     );
 }
 
-export async function projectLoader() {
+export async function projectsLoader() {
     const data = await fetch('mock-db.json').then(res => res.json());
     return { projects: data.projects };
 }

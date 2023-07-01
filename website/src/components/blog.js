@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useOutletContext } from "react-router-dom";
 import { EmailSignUp } from "./email-signup";
 import { Outlet } from "react-router-dom";
 import { Paging } from "./paging";
 
 export function Blog() {
     const { posts } = useLoaderData();
-
 
     const [resultsNum, setResultsNum] = useState(Math.min(10, posts.length));
     const [pageNum, setPageNum] = useState(0);
@@ -16,6 +15,7 @@ export function Blog() {
     const totalPages = Math.ceil(posts.length / resultsNum);
     if (pageNum > totalPages - 1)
         setPageNum(totalPages - 1);
+
     return (
         <Paging pageNum={pageNum} setPageNum={setPageNum} resultsNum={resultsNum} setResultsNum={setResultsNum}
             maxPerPage={posts.length - 1} totalPages={totalPages}
@@ -41,14 +41,19 @@ export function PostCard(props) {
     );
 }
 
-export async function postLoader({ params }) {
+export async function postsLoader({ params }) {
     const data = await fetch('mock-db.json').then(res => res.json());
     return { posts: data.posts, id: params.postId - 1 };
 }
 
+export async function postLoader({ params }) {
+    const data = await fetch('mock-db.json').then(res => res.json());
+    return { post: data.posts[params.postId - 1] };
+}
+
 export function BlogPost() {
-    const { posts, id } = useLoaderData();
-    const post = posts[id];
+    const { post } = useLoaderData();
+
     return (
         <div className="d-flex justify-content-center mt-5">
             <div className="w-75">

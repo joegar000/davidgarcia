@@ -2,8 +2,8 @@ import { Link, Outlet, Route, createHashRouter, createRoutesFromElements } from 
 import { CSSTransition } from "react-transition-group";
 import './App.css';
 import { Home } from "./components/home";
-import { Blog, BlogPost, postLoader } from "./components/blog";
-import { Projects, projectLoader } from './components/projects';
+import { Blog, BlogPost, postsLoader, postLoader } from "./components/blog";
+import { Projects, projectsLoader } from './components/projects';
 import { Resume } from './components/resume';
 import { Footer } from "./components/footer";
 
@@ -18,7 +18,7 @@ export const router = createHashRouter([
             },
             {
                 path: "/blog",
-                loader: postLoader,
+                loader: postsLoader,
                 element: <Blog />
             },
             {
@@ -28,7 +28,7 @@ export const router = createHashRouter([
             },
             {
                 path: "/projects",
-                loader: projectLoader,
+                loader: projectsLoader,
                 element: <Projects />
             },
             {
