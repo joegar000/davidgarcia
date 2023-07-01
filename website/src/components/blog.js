@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
-import { Link, useLoaderData, useOutletContext } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
 import { EmailSignUp } from "./email-signup";
-import { Outlet } from "react-router-dom";
 import { Paging } from "./paging";
 
 export function Blog() {

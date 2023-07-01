@@ -1,5 +1,4 @@
-import { Link, Outlet, Route, createHashRouter, createRoutesFromElements } from "react-router-dom";
-import { CSSTransition } from "react-transition-group";
+import { Link, Outlet, createHashRouter } from "react-router-dom";
 import './App.css';
 import { Home } from "./components/home";
 import { Blog, BlogPost, postsLoader, postLoader } from "./components/blog";

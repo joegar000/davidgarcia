@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Paging } from "./paging";
 import { useLoaderData } from "react-router-dom";
 
