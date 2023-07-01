@@ -1,17 +1,14 @@
 import { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
 import { Link, useLoaderData } from "react-router-dom";
 import { EmailSignUp } from "./email-signup";
+import { Outlet } from "react-router-dom";
+import { Paging } from "./paging";
 
 export function Blog() {
-    const [posts, setPosts] = useState([]);
+    const { posts } = useLoaderData();
+
+
     const [resultsNum, setResultsNum] = useState(Math.min(10, posts.length));
-    useEffect(() => {
-        fetch('mock-db.json').then(response => response.json()).then(data => {
-            setPosts(data.posts ?? []);
-            setResultsNum(Math.min(10, (data.posts?.length ?? 0)));
-        });
-    }, []);
     const [pageNum, setPageNum] = useState(0);
 
     const resultsStart = pageNum * resultsNum;
@@ -20,49 +17,13 @@ export function Blog() {
     if (pageNum > totalPages - 1)
         setPageNum(totalPages - 1);
     return (
-        <>
-            <div className="row d-md-flex justify-content-center my-4 m-auto w-50">
-                <div className="col-auto m-md-0 mb-3">
-                    <label className="form-label" htmlFor="resultsPerPageInput">Results per page</label>
-                    <input className="form-control" type="number" value={resultsNum} min="1" max={`${posts.length}`}
-                        onChange={e => setResultsNum(Number(e.target.value))}
-                    />
-                </div>
-                <div className="col-md d-flex justify-content-md-end justify-content-center align-items-end">
-                    <nav>
-                        <ReactPaginate forcePage={pageNum} className="pagination"
-                            pageCount={totalPages} pageRangeDisplayed={2} marginPagesDisplayed={1}
-                            activeClassName="disabled"
-                            pageClassName="page-item" pageLinkClassName="page-link"
-                            previousLabel="&laquo;" previousClassName="page-item" previousLinkClassName="page-link"
-                            nextLabel="&raquo;" nextClassName="page-item" nextLinkClassName="page-link"
-                            breakClassName="page-item" breakLinkClassName="page-link"
-                            onPageChange={(item) => {
-                                setPageNum(item.selected);
-                            }}
-                        />
-                    </nav>
-                </div>
-            </div>
+        <Paging pageNum={pageNum} setPageNum={setPageNum} resultsNum={resultsNum} setResultsNum={setResultsNum}
+            maxPerPage={posts.length - 1} totalPages={totalPages}
+        >
             <div className="d-flex align-items-center mt-4 flex-column">
                 {postsToRender.map((post, i) => <PostCard key={i + resultsStart} {...post} id={posts.indexOf(post) + 1} />)}
             </div>
-            <div className="d-flex mt-3 justify-content-center align-items-end" style={{ flexGrow: 10 }}>
-                <nav>
-                    <ReactPaginate forcePage={pageNum} className="pagination"
-                        pageCount={totalPages} pageRangeDisplayed={2} marginPagesDisplayed={1}
-                        activeClassName="disabled"
-                        pageClassName="page-item" pageLinkClassName="page-link"
-                        previousLabel="&laquo;" previousClassName="page-item" previousLinkClassName="page-link"
-                        nextLabel="&raquo;" nextClassName="page-item" nextLinkClassName="page-link"
-                        breakClassName="page-item" breakLinkClassName="page-link"
-                        onPageChange={(item) => {
-                            setPageNum(item.selected);
-                        }}
-                    />
-                </nav>
-            </div>
-        </>
+        </Paging>
     );
 }
 
@@ -82,11 +43,12 @@ export function PostCard(props) {
 
 export async function postLoader({ params }) {
     const data = await fetch('mock-db.json').then(res => res.json());
-    return data.posts[params.postId - 1];
+    return { posts: data.posts, id: params.postId - 1 };
 }
 
 export function BlogPost() {
-    const post = useLoaderData();
+    const { posts, id } = useLoaderData();
+    const post = posts[id];
     return (
         <div className="d-flex justify-content-center mt-5">
             <div className="w-75">

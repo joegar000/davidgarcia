@@ -1,28 +1,51 @@
+import { Link, Outlet, Route, createHashRouter, createRoutesFromElements } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 import './App.css';
-import { Link, Outlet, Route, RouterProvider, Routes, createBrowserRouter, createHashRouter, createRoutesFromElements } from "react-router-dom";
 import { Home } from "./components/home";
 import { Blog, BlogPost, postLoader } from "./components/blog";
-import { Projects } from './components/projects';
+import { Projects, projectLoader } from './components/projects';
 import { Resume } from './components/resume';
-import { ParallaxProvider } from 'react-scroll-parallax';
 import { Footer } from "./components/footer";
 
-export const router = createHashRouter(createRoutesFromElements(
-    <Route path="/" element={<App />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:postId" loader={postLoader} element={<BlogPost />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/resume" element={<Resume />} />
-    </Route>
-));
+export const router = createHashRouter([
+    {
+        path: "/",
+        element: <App />,
+        children: [
+            {
+                path: "/",
+                element: <Home />
+            },
+            {
+                path: "/blog",
+                loader: postLoader,
+                element: <Blog />
+            },
+            {
+                path: "/blog/:postId",
+                loader: postLoader,
+                element: <BlogPost />
+            },
+            {
+                path: "/projects",
+                loader: projectLoader,
+                element: <Projects />
+            },
+            {
+                path: "/resume",
+                element: <Resume />
+            }
+        ]
+    }
+]);
+
 function App() {
     return (
-        <ParallaxProvider>
+        <>
             <Navbar />
             <Outlet />
             <Footer />
-        </ParallaxProvider>
+        </>
     );
 }
 

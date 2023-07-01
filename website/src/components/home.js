@@ -1,4 +1,3 @@
-import { useParallax } from "react-scroll-parallax";
 import imgMe from "../me.jpg";
 
 export function Home() {
