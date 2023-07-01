@@ -14,7 +14,7 @@ export function Projects() {
         setPageNum(totalPages - 1);
     return (
         <Paging pageNum={pageNum} setPageNum={setPageNum} resultsNum={resultsNum} setResultsNum={setResultsNum}
-            maxPerPage={projects.length - 1} totalPages={totalPages}
+            maxPerPage={projects.length} totalPages={totalPages}
         >
             <div className="d-flex justify-content-center">
                 <div className="row w-75">

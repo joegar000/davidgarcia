@@ -1,6 +1,6 @@
 import ReactPaginate from "react-paginate";
 
-export function Paging({ children, pageNum, setPageNum, resultsNum, setResultsNum, max: maxPerPage, totalPages }) {
+export function Paging({ children, pageNum, setPageNum, resultsNum, setResultsNum, maxPerPage, totalPages }) {
     return (
         <>
             <div className="row d-md-flex justify-content-center my-4 m-auto w-50">

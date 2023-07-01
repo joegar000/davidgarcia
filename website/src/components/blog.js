@@ -5,7 +5,7 @@ import { Paging } from "./paging";
 
 export function Blog() {
     const { posts } = useLoaderData();
-
+    console.log('hi')
     const [resultsNum, setResultsNum] = useState(Math.min(10, posts.length));
     const [pageNum, setPageNum] = useState(0);
 
@@ -17,7 +17,7 @@ export function Blog() {
 
     return (
         <Paging pageNum={pageNum} setPageNum={setPageNum} resultsNum={resultsNum} setResultsNum={setResultsNum}
-            maxPerPage={posts.length - 1} totalPages={totalPages}
+            maxPerPage={posts.length} totalPages={totalPages}
         >
             <div className="d-flex align-items-center mt-4 flex-column">
                 {postsToRender.map((post, i) => <PostCard key={i + resultsStart} {...post} id={posts.indexOf(post) + 1} />)}
