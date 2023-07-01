@@ -17,7 +17,7 @@ export function Home() {
                     </p>
                 </div>
                 <div className="col-md d-flex justify-content-center pt-md-0 pt-5">
-                    <img className="rounded-5" src={imgMe} style={{ maxWidth: '80%', height: 'auto', objectFit: 'cover' }} ></img>
+                    <img className="rounded-5" src={imgMe} style={{ maxWidth: '70%', height: 'auto', objectFit: 'cover' }} ></img>
                 </div>
             </div >
         </>
