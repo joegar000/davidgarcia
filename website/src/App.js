@@ -5,6 +5,7 @@ import { Blog, BlogPost, postsLoader, postLoader } from "./components/blog";
 import { Projects, projectsLoader } from './components/projects';
 import { Resume } from './components/resume';
 import { Footer } from "./components/footer";
+import { resumeLoader } from "./components/resume";
 
 export const router = createHashRouter([
     {
@@ -32,6 +33,7 @@ export const router = createHashRouter([
             },
             {
                 path: "/resume",
+                loader: resumeLoader,
                 element: <Resume />
             }
         ]
