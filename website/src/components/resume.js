@@ -16,7 +16,7 @@ export function Resume() {
                         <i className="bi bi-download" />
                     </a>
                 </div>
-                <div style={{ width: 'fit-content' }}>
+                <div style={{ minWidth: 'fit-content' }}>
                     <Document className="d-flex justify-content-center overflow-x-auto" file={file}>
                         <Page pageNumber={1} />
                     </Document>
