@@ -20,6 +20,10 @@ export function getPosts() {
     return window.api.getPosts();
 }
 
+export function getDrafts() {
+    return window.api.getDrafts();
+}
+
 export function saveNewDraft(data) {
     window.api.editDrafts((drafts) => {
         drafts.push(data);

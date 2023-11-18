@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { PostForm, ProseMirror } from "./util";
-import { saveNewPost } from "./api";
+import { PostForm } from "./util";
+import { saveNewDraft, saveNewPost } from "./api";
 
 export function NewPost() {
     const [title, setTitle] = useState('');
@@ -22,12 +22,18 @@ export function NewPost() {
                 <div className="col-auto">
                     <button className="btn btn-success w-auto" id="submit-new-post" type="button"
                         onClick={() => {
-                            saveNewPost({ title, subtitle, html, date: new Date().toDateString() })
+                            saveNewPost({ title, subtitle, html, date: new Date().toDateString() });
                         }}
                     >Submit</button>
                 </div>
                 <div className="col-auto">
-                    <button className="btn btn-warning w-auto" id="submit-draft-post" type="button">Submit as Draft</button>
+                    <button className="btn btn-warning w-auto" id="submit-draft-post" type="button"
+                        onClick={() => {
+                            saveNewDraft({ title, subtitle, html, date: new Date().toDateString() });
+                        }}
+                    >
+                        Submit as Draft
+                    </button>
                 </div>
                 <div className="col-auto">
                     <Link to="/" className="btn btn-danger w-auto">Cancel</Link>

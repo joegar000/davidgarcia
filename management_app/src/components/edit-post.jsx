@@ -63,9 +63,6 @@ export function EditPostHelper({ post }) {
                     </button>
                 </div>
                 <div className="col-auto">
-                    <button className="btn btn-warning w-auto" id="submit-draft-post" type="button">Submit as Draft</button>
-                </div>
-                <div className="col-auto">
                     <Link to="/edit_posts" className="btn btn-danger w-auto">Cancel</Link>
                 </div>
             </div>
