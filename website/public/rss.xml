@@ -4,7 +4,7 @@
         <title>David Garcia</title>
         <link>https://joegar000.github.io/davidgarcia/</link>
         <description>The personal blog of David Garcia</description>
-        <lastBuildDate>Fri, 17 Nov 2023 23:33:31 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 18 Nov 2023 05:33:25 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>David Garcia</copyright>
@@ -17,10 +17,10 @@
         </item>
         <item>
             <title><![CDATA[UX Considerations]]></title>
-            <link>https://joegar000.github.io/davidgarcia/#/blog/3</link>
-            <guid>https://joegar000.github.io/davidgarcia/#/blog/3</guid>
+            <link>https://joegar000.github.io/davidgarcia/#/blog/2</link>
+            <guid>https://joegar000.github.io/davidgarcia/#/blog/2</guid>
             <pubDate>Fri, 17 Nov 2023 06:00:00 GMT</pubDate>
-            <description><![CDATA[One rule of thumb for creating applications that provide a postive user experience.]]></description>
+            <description><![CDATA[One rule of thumb for creating applications that provide a positive user experience.]]></description>
         </item>
     </channel>
 </rss>
