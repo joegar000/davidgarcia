@@ -35,6 +35,19 @@
         }
       ],
       "description": "A podcast I made with two of my STEM friends my junior year of college. They call me Joey, my nickname."
+    },
+    {
+      "title": "Watch Algorithms",
+      "tags": [
+        "WIP"
+      ],
+      "links": [
+        {
+          "link": "https://joegar000.github.io/watch-algorithms/",
+          "text": "Check it out"
+        }
+      ],
+      "description": "A website I made to visualize various algorithms."
     }
   ]
 }

@@ -8,7 +8,7 @@ export function Projects() {
     const [pageNum, setPageNum] = useState(0);
 
     const resultsStart = pageNum * resultsNum * 3;
-    const projectsToRender = projects.slice(resultsStart, resultsStart + resultsNum * 3);
+    const projectsToRender = projects.slice(resultsStart, resultsStart + resultsNum * 3).reverse();
     const totalPages = Math.ceil(Math.ceil(projects.length / 3) / resultsNum);
     if (pageNum > totalPages - 1)
         setPageNum(totalPages - 1);
