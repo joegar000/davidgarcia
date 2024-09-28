@@ -1,18 +1,21 @@
 {
   "name": "react-ts",
-  "private": true,
+  "homepage": "https://joegar000.github.io/davidgarcia/",
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d build"
   },
   "dependencies": {
     "framer-motion": "^11.5.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "gh-pages": "^5.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
