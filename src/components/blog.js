@@ -28,7 +28,7 @@ export function Blog() {
 
 export function PostCard(props) {
     return (
-        <div className="post-card card w-100 my-3">
+        <div className="post-card card w-100 my-3" style={{ maxWidth: '45em' }}>
             <div className="card-body">
                 <h5 className="card-title">{props.title}</h5>
                 <h6 className="card-subtitle mb-2 text-body-secondary">{props.subtitle}</h6>
