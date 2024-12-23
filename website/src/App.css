@@ -46,3 +46,13 @@ div.blog-content p:empty {
     transform: rotate(360deg);
   }
 }
+
+.my-resume canvas, .my-resume .react-pdf__Page__textContent {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.my-resume .react-pdf__Page__annotations  {
+  width: 100% !important;
+  height: 100% !important;
+}
