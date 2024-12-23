@@ -19,7 +19,7 @@ export function Blog() {
             maxPerPage={posts.length} totalPages={totalPages}
         >
             <div className="d-flex align-items-center mt-4 flex-column">
-                {postsToRender.map((post, i) => <PostCard key={i + resultsStart} {...post} id={posts.indexOf(post) + 1} />)}
+                {postsToRender.map((post, i) => <PostCard key={i + resultsStart} {...post} id={urlify(post.title)} />)}
             </div>
         </Paging>
     );
@@ -28,7 +28,7 @@ export function Blog() {
 
 export function PostCard(props) {
     return (
-        <div className="post-card card w-50 my-3">
+        <div className="post-card card w-100 my-3">
             <div className="card-body">
                 <h5 className="card-title">{props.title}</h5>
                 <h6 className="card-subtitle mb-2 text-body-secondary">{props.subtitle}</h6>
@@ -41,12 +41,13 @@ export function PostCard(props) {
 
 export async function postsLoader({ params }) {
     const data = await fetch('mock-db.json').then(res => res.json());
-    return { posts: data.posts, id: params.postId - 1 };
+    return { posts: data.posts };
 }
 
 export async function postLoader({ params }) {
     const data = await fetch('mock-db.json').then(res => res.json());
-    return { post: data.posts[params.postId - 1] };
+    const post = data.posts.find(({ title }) => urlify(title) === params.postId)
+    return { post };
 }
 
 export function BlogPost() {
@@ -68,3 +69,14 @@ export function BlogPost() {
         </div >
     );
 }
+
+// credit chatgpt
+export function urlify(postName) {
+    // Remove non-alphanumeric characters (excluding spaces), replace spaces with dashes, and convert to lowercase
+    return postName
+        .replace(/[^a-zA-Z0-9\s]/g, '') // Remove non-alphanumeric characters
+        .trim()                        // Remove leading and trailing whitespace
+        .replace(/\s+/g, '-')          // Replace spaces (including multiple spaces) with dashes
+        .toLowerCase();                // Convert to lowercase
+}
+
