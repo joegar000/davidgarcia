@@ -17,7 +17,7 @@ export function Projects() {
             maxPerPage={projects.length} totalPages={totalPages}
         >
             <div className="d-flex justify-content-center">
-                <div className="row w-75">
+                <div className="row">
                     {projectsToRender.map((project, i) => <div key={i} className="col-md-4 pt-5"><ProjectCard {...project} /></div>)}
                 </div>
             </div>
