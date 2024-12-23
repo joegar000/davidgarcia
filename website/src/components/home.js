@@ -19,7 +19,7 @@ export function Home() {
                 <div className="col d-none d-lg-flex justify-content-center">
                     <img className="rounded-5" src={imgMe} style={{ maxWidth: '50%', height: 'auto', objectFit: 'cover', aspectRatio: 1 }}></img>
                 </div>
-                <div className="col d-flex d-lg-none justify-content-center pt-5">
+                <div className="col d-flex d-lg-none justify-content-center pt-5 pb-5">
                     <img src={imgMe} style={{ maxWidth: '50%', height: 'auto', objectFit: 'cover', borderRadius: '100%' }}></img>
                 </div>
             </div>
