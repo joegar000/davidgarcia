@@ -48,19 +48,6 @@
         }
       ],
       "description": "A website I made to visualize various algorithms."
-    },
-    {
-      "title": "YouTube",
-      "tags": [
-        "WIP"
-      ],
-      "links": [
-        {
-          "link": "https://www.youtube.com/channel/UCCmerZkBVRLO3Tnk2mPkOKA",
-          "text": "Channel Link"
-        }
-      ],
-      "description": "I upload coding related videos here. I'm hoping to improve my understanding through teaching."
     }
   ]
 }
