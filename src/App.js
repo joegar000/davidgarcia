@@ -79,24 +79,24 @@ export function Navbar() {
                     <ul className="navbar-nav m-auto">
                         <li className="nav-item">
                             <Link to="/"
-                                className={`nav-link navbar-brand${pathname == '/' ? ' disabled' : ''}`}
+                                className={`nav-link navbar-brand${pathname === '/' ? ' disabled' : ''}`}
                             >
                                 Home
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/blog" className={`nav-link navbar-brand${pathname == '/blog' ? ' disabled' : ''}`}>Blog</Link>
+                            <Link to="/blog" className={`nav-link navbar-brand${pathname === '/blog' ? ' disabled' : ''}`}>Blog</Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/projects"
-                                className={`nav-link navbar-brand${pathname == '/projects' ? ' disabled' : ''}`}
+                                className={`nav-link navbar-brand${pathname === '/projects' ? ' disabled' : ''}`}
                             >
                                 Projects
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/resume"
-                                className={`nav-link navbar-brand${pathname == '/resume' ? ' disabled' : ''}`}
+                                className={`nav-link navbar-brand${pathname === '/resume' ? ' disabled' : ''}`}
                             >
                                 Resume
                             </Link>
