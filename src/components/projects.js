@@ -3,7 +3,7 @@ import { Paging } from "./paging";
 import { useLoaderData } from "react-router-dom";
 
 export function Projects() {
-    const { projects } = useLoaderData();
+    const [{ projects }] = useState(useLoaderData());
     const [resultsNum, setResultsNum] = useState(Math.min(4, projects.length));
     const [pageNum, setPageNum] = useState(0);
 
@@ -13,15 +13,17 @@ export function Projects() {
     if (pageNum > totalPages - 1)
         setPageNum(totalPages - 1);
     return (
-        <Paging pageNum={pageNum} setPageNum={setPageNum} resultsNum={resultsNum} setResultsNum={setResultsNum}
-            maxPerPage={projects.length} totalPages={totalPages}
-        >
-            <div className="d-flex justify-content-center">
-                <div className="row">
-                    {projectsToRender.map((project, i) => <div key={i} className="col-md-4 pt-5"><ProjectCard {...project} /></div>)}
+        <div>
+            <Paging pageNum={pageNum} setPageNum={setPageNum} resultsNum={resultsNum} setResultsNum={setResultsNum}
+                maxPerPage={projects.length} totalPages={totalPages}
+            >
+                <div className="d-flex justify-content-center">
+                    <div className="row">
+                        {projectsToRender.map((project, i) => <div key={i} className="col-md-4 pt-5"><ProjectCard {...project} /></div>)}
+                    </div>
                 </div>
-            </div>
-        </Paging>
+            </Paging>
+        </div>
     );
 }
 

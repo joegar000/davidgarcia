@@ -4,7 +4,7 @@ import { EmailSignUp } from "./email-signup";
 import { Paging } from "./paging";
 
 export function Blog() {
-    const { posts } = useLoaderData();
+    const [{ posts }] = useState(useLoaderData())
     const [resultsNum, setResultsNum] = useState(Math.min(10, posts.length));
     const [pageNum, setPageNum] = useState(0);
 
@@ -15,13 +15,15 @@ export function Blog() {
         setPageNum(totalPages - 1);
 
     return (
-        <Paging pageNum={pageNum} setPageNum={setPageNum} resultsNum={resultsNum} setResultsNum={setResultsNum}
-            maxPerPage={posts.length} totalPages={totalPages}
-        >
-            <div className="d-flex align-items-center mt-4 flex-column">
-                {postsToRender.map((post, i) => <PostCard key={i + resultsStart} {...post} id={urlify(post.title)} />)}
-            </div>
-        </Paging>
+        <div>
+            <Paging pageNum={pageNum} setPageNum={setPageNum} resultsNum={resultsNum} setResultsNum={setResultsNum}
+                maxPerPage={posts.length} totalPages={totalPages}
+            >
+                <div className="d-flex align-items-center mt-4 flex-column">
+                    {postsToRender.map((post, i) => <PostCard key={i + resultsStart} {...post} id={urlify(post.title)} />)}
+                </div>
+            </Paging>
+        </div>
     );
 }
 

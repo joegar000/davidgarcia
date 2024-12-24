@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Document, Page } from "react-pdf";
 import { useLoaderData } from "react-router-dom";
 import { pdfjs } from 'react-pdf';
@@ -7,12 +8,12 @@ import 'react-pdf/dist/esm/Page/TextLayer.css';
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 export function Resume() {
-    const file = useLoaderData();
+    const [file] = useState(useLoaderData());
     return (
         <div className="d-flex justify-content-center my-4">
             <div className="container overflow-auto">
                 <div className="position-fixed" style={{ zIndex: 1000 }}>
-                    <a className="btn btn-primary" href="resume.pdf" download={true}>
+                    <a className="btn btn-outline-primary d-flex align-items-center" href="resume.pdf" download={true} style={{ aspectRatio: 1, borderRadius: '100%' }}>
                         <i className="bi bi-download" />
                     </a>
                 </div>

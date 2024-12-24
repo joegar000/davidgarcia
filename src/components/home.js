@@ -2,7 +2,7 @@ import imgMe from "../me.jpg";
 
 export function Home() {
     return (
-        <>
+        <div>
             <div className="text-center pt-5 px-2">
                 <span className="m-auto display-6">Hello! My name is David. I'm a software developer.</span>
             </div>
@@ -17,12 +17,12 @@ export function Home() {
                     </p>
                 </div>
                 <div className="col d-none d-lg-flex justify-content-center">
-                    <img className="rounded-5" src={imgMe} style={{ maxWidth: '50%', height: 'auto', objectFit: 'cover', aspectRatio: 1 }}></img>
+                    <img src={imgMe} className="rounded-5" style={{ maxWidth: '50%', height: 'auto', objectFit: 'cover', aspectRatio: 1 }}></img>
                 </div>
                 <div className="col d-flex d-lg-none justify-content-center pt-5 pb-5">
                     <img src={imgMe} style={{ maxWidth: '50%', height: 'auto', objectFit: 'cover', borderRadius: '100%' }}></img>
                 </div>
             </div>
-        </>
+        </div>
     );
 }

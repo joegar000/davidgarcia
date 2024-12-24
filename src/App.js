@@ -1,10 +1,12 @@
-import { Link, Outlet, createHashRouter, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Link, useOutlet, createHashRouter, useLocation } from "react-router-dom";
 import './App.css';
 import { Home } from "./components/home";
 import { Blog, BlogPost, postsLoader, postLoader } from "./components/blog";
 import { Projects, projectsLoader } from './components/projects';
 import { Resume } from './components/resume';
 import { resumeLoader } from "./components/resume";
+import { AnimatePresence, motion } from "framer-motion";
 
 export const router = createHashRouter([
     {
@@ -39,13 +41,28 @@ export const router = createHashRouter([
     }
 ]);
 
+function AnimatedOutlet() {
+    const o = useOutlet();
+    const [outlet] = useState(o);
+
+    return <>{outlet}</>;
+};
+
 function App() {
+    const { key } = useLocation();
     return (
         <>
             <Navbar />
-            <div className="container mx-auto">
-                <Outlet />
-            </div>
+            <AnimatePresence mode="wait">
+                <motion.div className="container mx-auto" key={key}
+                    initial={{ translateY: '5em', opacity: 0 }}
+                    animate={{ translateY: '0', opacity: 1 }}
+                    exit={{ opacity: 0, translateY: '-5em' }}
+                    transition={{ duration: 0.25 }}
+                >
+                    <AnimatedOutlet />
+                </motion.div>
+            </AnimatePresence>
         </>
     );
 }
@@ -53,7 +70,7 @@ function App() {
 export function Navbar() {
     const { pathname } = useLocation();
     return (
-        <nav className="navbar navbar-expand-sm bg-body p-3 shadow-sm">
+        <nav className="navbar navbar-expand-sm bg-body p-3 shadow-sm" style={{ zIndex: 1 }}>
             <div className="container-fluid">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#my-navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
