@@ -53,7 +53,7 @@ export async function postLoader({ params }) {
 }
 
 export function BlogPost() {
-    const { post } = useLoaderData();
+    const [{ post }] = useState(useLoaderData());
 
     return (
         <div className="d-flex justify-content-center mt-5">
